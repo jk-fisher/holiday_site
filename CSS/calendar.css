@@ -2,7 +2,7 @@
     display: flex;
     justify-content: left;
     align-items: center;
-    padding: 50px 100px;
+    padding: 50px;
     box-sizing: border-box;
 
 }
@@ -105,4 +105,18 @@
 
 .none {
     visibility: hidden;
+}
+
+.date-enquiry{
+    width: 50%;
+    margin: auto;
+    text-align: center; 
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 32px;
+    color: #C3A97B;
+    text-align: center;
+}
+
+.clicked {
+    background-color: #C0C0C0;
 }
