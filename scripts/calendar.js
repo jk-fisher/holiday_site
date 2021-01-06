@@ -1,10 +1,25 @@
 const date = new Date();
+const month = [ 
+    "January",
+    "February",
+    "March", 
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+];
 
 const prevMonth = document.querySelector('.prev-month');
 const nextMonth = document.querySelector('.next-month');
 const prevYear = document.querySelector('.prev-year');
 const nextYear = document.querySelector('.next-year');
 const monthDays = document.querySelector('.days');
+const selectedDates = document.querySelector('.date-enquiry');
 
 const renderCalendar = () =>{
     date.setDate(1);
@@ -36,20 +51,7 @@ const renderCalendar = () =>{
 
     const nextMonthDays = 7 - lastDayIndex - 1;
 
-    const month = [ 
-        "January",
-        "February",
-        "March", 
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December"
-    ];
+
 
     document.querySelector('.month').innerHTML = month[date.getMonth()];
     document.querySelector('.year').innerHTML = date.getFullYear();
@@ -103,6 +105,14 @@ const renderCalendar = () =>{
     }
 
 };
+
+//function to render selected dates
+const dateEnquiry = (selectedDay) => {
+    selectedDates.innerHTML = new Date(date.getFullYear(), date.getMonth(), selectedDay).toDateString()
+    // selectedDates.innerHTML = `${selectedDay}/${date.getMonth()}/${date.getFullYear()}`;
+};
+
+
 prevMonth.addEventListener('click', () =>{
     date.setMonth(date.getMonth()-1);
     renderCalendar();
@@ -123,8 +133,9 @@ nextYear.addEventListener('click', () => {
 //listen for selected days
 monthDays.addEventListener('click', e => {
     if(e.target.classList.contains('day')){
+        e.target.classList.add('clicked');
         const selectedDay = e.target.id;
-        console.log(selectedDay);
+        dateEnquiry(selectedDay);
     }
 });
 renderCalendar();

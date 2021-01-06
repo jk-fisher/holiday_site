@@ -176,33 +176,34 @@
             </section>
             <div class="color-block"></div>
             <section class="template price">
-            <div class="calendar">
-                <div class="month-year">
-                    <div class="prev">
-                        <i class="fas fa-angle-left prev-month"></i>
-                        <i class="fas fa-angle-left prev-year"></i>
+                <div class="calendar">
+                    <div class="month-year">
+                        <div class="prev">
+                            <i class="fas fa-angle-left prev-month"></i>
+                            <i class="fas fa-angle-left prev-year"></i>
+                        </div>
+                        <div class="date">
+                            <div class="month"></div>
+                            <div class="year"></div>
+                            <div class="selected-date"></div>
+                        </div>
+                        <div class="next">
+                            <i class="fas fa-angle-right next-month"></i>
+                            <i class="fas fa-angle-right next-year"></i>
+                        </div>
                     </div>
-                    <div class="date">
-                        <div class="month"></div>
-                        <div class="year"></div>
-                        <div class="selected-date"></div>
+                    <div class="weekdays">
+                        <div>Sun</div>
+                        <div>Mon</div>
+                        <div>Tue</div>
+                        <div>Wed</div>
+                        <div>Thu</div>
+                        <div>Fri</div>
+                        <div>Sat</div>
                     </div>
-                    <div class="next">
-                        <i class="fas fa-angle-right next-month"></i>
-                        <i class="fas fa-angle-right next-year"></i>
-                    </div>
+                    <div class="days"></div>
                 </div>
-                <div class="weekdays">
-                    <div>Sun</div>
-                    <div>Mon</div>
-                    <div>Tue</div>
-                    <div>Wed</div>
-                    <div>Thu</div>
-                    <div>Fri</div>
-                    <div>Sat</div>
-                </div>
-                <div class="days"></div>
-            </div>
+                <div class="date-enquiry"></div>
             </section>
             <div class="color-block"></div>
             <div class="cntr"><a name="reviews"></a></div>
