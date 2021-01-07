@@ -1,5 +1,5 @@
 import { navFunction, displayText, showEnquiryBtn } from './scripts/script';
-
+import Calendar, { prevMonth, nextMonth, prevYear, nextYear } from './scripts/calendar';
 
 //modal function
 const modal = document.getElementById("myModal");
@@ -20,19 +20,41 @@ window.addEventListener('click', (event) => {
   }
 });
 
-//navbar function
+//call navbar function
 const nav = document.getElementById("myTopnav");
 nav.addEventListener('click', () => {
     navFunction();
 });
 
-//enquiry button
+//show enquiry button on scroll
 window.addEventListener('scroll', () => {
     showEnquiryBtn();
 })
 // window.onscroll = showEnquiryBtn();
 
+//show more text function
 const moreText = document.getElementById("moreBtn");
 moreText.addEventListener('click', () => {
     displayText();
 })
+
+//create calendar
+const calendar = new Calendar();
+calendar.renderCalendar();
+
+prevMonth.addEventListener('click', () =>{
+    this.date.setMonth(this.date.getMonth()-1);
+    this.renderCalendar();
+});
+nextMonth.addEventListener('click', () => {
+    this.date.setMonth(this.date.getMonth()+1);
+    this.renderCalendar();
+});
+prevYear.addEventListener('click', () =>{
+    this.date.setFullYear(this.date.getFullYear()-1);
+    this.renderCalendar();
+});
+nextYear.addEventListener('click', () => {
+    this.date.setFullYear(this.date.getFullYear()+1);
+    this.renderCalendar();
+});
