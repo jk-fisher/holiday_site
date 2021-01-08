@@ -120,3 +120,7 @@
 .clicked {
     background-color: #C0C0C0;
 }
+
+.clicked-range {
+    background-color: #F1F1F1;
+}
