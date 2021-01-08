@@ -20,6 +20,7 @@ class Calendar {
         this.prevYear = document.querySelector('.prev-year');
         this.nextYear = document.querySelector('.next-year');
         this.monthDays = document.querySelector('.days');
+        this.dateEnquiry = document.querySelector('.date-enquiry')
     };
     
 
@@ -124,28 +125,10 @@ class Calendar {
     
     selectDays(selectedDay) {
         console.log(selectedDay)
-        // selectedDates.innerHTML = new Date(this.date.getFullYear(), this.date.getMonth(), selectedDay).toDateString()
-        // selectedDates.innerHTML = `${selectedDay}/${this.date.getMonth()}/${date.getFullYear()}`;
+        this.dateEnquiry.innerHTML = new Date(this.date.getFullYear(), this.date.getMonth(), selectedDay).toDateString();
     };
 
 };
-
-// this.prevMonth.addEventListener('click', () =>{
-//     this.date.setMonth(this.date.getMonth()-1);
-//     this.renderCalendar();
-// });
-// nextMonth.addEventListener('click', () => {
-//     this.date.setMonth(this.date.getMonth()+1);
-//     this.renderCalendar();
-// });
-// prevYear.addEventListener('click', () =>{
-//     this.date.setFullYear(this.date.getFullYear()-1);
-//     this.renderCalendar();
-// });
-// nextYear.addEventListener('click', () => {
-//     this.date.setFullYear(this.date.getFullYear()+1);
-//     this.renderCalendar();
-// });
 
 
 export { Calendar as default };
