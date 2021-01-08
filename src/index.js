@@ -1,5 +1,5 @@
 import { navFunction, displayText, showEnquiryBtn } from './scripts/script';
-import Calendar, { prevMonth, nextMonth, prevYear, nextYear } from './scripts/calendar';
+import Calendar from './scripts/calendar';
 
 //modal function
 const modal = document.getElementById("myModal");
@@ -42,19 +42,21 @@ moreText.addEventListener('click', () => {
 const calendar = new Calendar();
 calendar.renderCalendar();
 
-prevMonth.addEventListener('click', () =>{
-    this.date.setMonth(this.date.getMonth()-1);
-    this.renderCalendar();
+
+calendar.prevMonth.addEventListener('click', () =>{
+    calendar.date.setMonth(calendar.date.getMonth()-1);
+    calendar.renderCalendar();
 });
-nextMonth.addEventListener('click', () => {
-    this.date.setMonth(this.date.getMonth()+1);
-    this.renderCalendar();
+calendar.nextMonth.addEventListener('click', () => {
+    calendar.date.setMonth(calendar.date.getMonth()+1);
+    calendar.renderCalendar();
 });
-prevYear.addEventListener('click', () =>{
-    this.date.setFullYear(this.date.getFullYear()-1);
-    this.renderCalendar();
+calendar.prevYear.addEventListener('click', () =>{
+    calendar.date.setFullYear(calendar.date.getFullYear()-1);
+    calendar.renderCalendar();
 });
-nextYear.addEventListener('click', () => {
-    this.date.setFullYear(this.date.getFullYear()+1);
-    this.renderCalendar();
+calendar.nextYear.addEventListener('click', () => {
+    calendar.date.setFullYear(calendar.date.getFullYear()+1);
+    calendar.renderCalendar();
 });
+

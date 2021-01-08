@@ -1,12 +1,6 @@
-const prevMonth = document.querySelector('.prev-month');
-const nextMonth = document.querySelector('.next-month');
-const prevYear = document.querySelector('.prev-year');
-const nextYear = document.querySelector('.next-year');
-const monthDays = document.querySelector('.days');
-
 class Calendar {
     constructor() {
-        this.this.date = new Date();
+        this.date = new Date();
         this.month = [ 
             "January",
             "February",
@@ -21,6 +15,11 @@ class Calendar {
             "November",
             "December"
         ];
+        this.prevMonth = document.querySelector('.prev-month');
+        this.nextMonth = document.querySelector('.next-month');
+        this.prevYear = document.querySelector('.prev-year');
+        this.nextYear = document.querySelector('.next-year');
+        this.monthDays = document.querySelector('.days');
     };
     
 
@@ -42,7 +41,7 @@ class Calendar {
             console.log(prevLastDate);
         
         const firstDayIndex = this.date.getDay();
-        // console.log(firstDayIndex);
+        console.log(firstDayIndex);
         
         
         const lastDayIndex = new Date(
@@ -58,18 +57,23 @@ class Calendar {
     
         document.querySelector('.month').innerHTML = this.month[this.date.getMonth()];
         document.querySelector('.year').innerHTML = this.date.getFullYear();
+        console.log(this.month[this.date.getMonth()])
+        console.log(this.date.getFullYear())
     
-        document.querySelector('.selected-this.date').innerHTML = new Date().toDateString();
+        document.querySelector('.selected-date').innerHTML = new Date().toDateString();
     
         let days = "";
-    
+        console.log(days, firstDayIndex)
+
         //count down to output last month days
-        for(x = firstDayIndex; x > 0; x--){
-            days += `<div class="prev-this.date day" id=${prevLastDate - x + 1}>${prevLastDate - x + 1}</div>`
+        for(let x = firstDayIndex; x > 0; x--){
+            // console.log(x)
+            days += `<div class="prev-date day" id=${prevLastDate - x + 1}>${prevLastDate - x + 1}</div>`
+            console.log(days)
         };
     
         //this month days
-        for(i = 1; i <= lastDate; i++){
+        for(let i = 1; i <= lastDate; i++){
             if(i === new Date().getDate() &&
             this.date.getMonth() === new Date().getMonth() &&
             this.date.getFullYear() === new Date().getFullYear()
@@ -81,33 +85,34 @@ class Calendar {
         };
     
         //next month days
-        for(j = 1; j <= nextMonthDays; j++){
-            days += `<div class="next-this.date day" id=${j}>${j}</div>`
+        for(let j = 1; j <= nextMonthDays; j++){
+            days += `<div class="next-date day" id=${j}>${j}</div>`
         };
-        monthDays.innerHTML = days;
+        console.log('test2');
+        this.monthDays.innerHTML = days;
     
         //hide and show arrow icons
         if(this.date.getFullYear() <= new Date().getFullYear() &&
         this.date.getMonth() <= new Date().getMonth()){
-            prevYear.classList.add('none');
-            prevMonth.classList.add('none');
+            this.prevYear.classList.add('none');
+            this.prevMonth.classList.add('none');
     
         } else if (this.date.getFullYear() <= new Date().getFullYear()){
-            prevYear.classList.add('none')
+            this.prevYear.classList.add('none')
         };
     
         if(this.date.getFullYear() >= new Date().getFullYear() &&
         this.date.getMonth() >= new Date().getMonth()+1) {
-            prevMonth.classList.remove('none');
+            this.prevMonth.classList.remove('none');
     
         };
         if (this.date.getFullYear() > new Date().getFullYear()){
-            prevYear.classList.remove('none');
-            prevMonth.classList.remove('none');
+            this.prevYear.classList.remove('none');
+            this.prevMonth.classList.remove('none');
     
         };
         //listen for selected days
-        monthDays.addEventListener('click', e => {
+        this.monthDays.addEventListener('click', e => {
             if(e.target.classList.contains('day')){
                 e.target.classList.add('clicked');
                 const selectedDay = e.target.id;
@@ -118,14 +123,32 @@ class Calendar {
     };
     
     selectDays(selectedDay) {
-        selectedDates.innerHTML = new Date(this.date.getFullYear(), this.date.getMonth(), selectedDay).toDateString()
+        console.log(selectedDay)
+        // selectedDates.innerHTML = new Date(this.date.getFullYear(), this.date.getMonth(), selectedDay).toDateString()
         // selectedDates.innerHTML = `${selectedDay}/${this.date.getMonth()}/${date.getFullYear()}`;
     };
-    
+
 };
 
+// this.prevMonth.addEventListener('click', () =>{
+//     this.date.setMonth(this.date.getMonth()-1);
+//     this.renderCalendar();
+// });
+// nextMonth.addEventListener('click', () => {
+//     this.date.setMonth(this.date.getMonth()+1);
+//     this.renderCalendar();
+// });
+// prevYear.addEventListener('click', () =>{
+//     this.date.setFullYear(this.date.getFullYear()-1);
+//     this.renderCalendar();
+// });
+// nextYear.addEventListener('click', () => {
+//     this.date.setFullYear(this.date.getFullYear()+1);
+//     this.renderCalendar();
+// });
 
-export { prevMonth, nextMonth, prevYear, nextYear, Calendar as default };
+
+export { Calendar as default };
 
 
 

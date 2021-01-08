@@ -316,8 +316,8 @@
                 </form>
             </div>
         </div>  
-        <script src="scripts/calendar.js"></script>
-        <script src="scripts/script.js"></script>
+        <!-- <script src="scripts/calendar.js"></script> -->
+        <!-- <script src="scripts/script.js"></script> -->
         <script src="assets/bundle.js"></script> 
     </body>
     <footer>
