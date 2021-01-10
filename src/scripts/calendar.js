@@ -42,10 +42,8 @@ class Calendar {
             this.date.getMonth(),
             0
             ).getDate();
-            console.log(prevLastDate);
         
         const firstDayIndex = this.date.getDay();
-        console.log(firstDayIndex);
         
         
         const lastDayIndex = new Date(
@@ -53,7 +51,6 @@ class Calendar {
             this.date.getMonth() + 1,
             0
             ).getDay();
-            console.log(lastDayIndex);
     
         const nextMonthDays = 7 - lastDayIndex - 1;
     
@@ -63,6 +60,7 @@ class Calendar {
         document.querySelector('.year').innerHTML = this.date.getFullYear();
         // console.log(this.month[this.date.getMonth()])
         // console.log(this.date.getFullYear())
+        
     
         document.querySelector('.selected-date').innerHTML = new Date().toDateString();
     
@@ -102,7 +100,7 @@ class Calendar {
         this.date.getMonth() <= new Date().getMonth()){
             this.prevYear.classList.add('none');
             this.prevMonth.classList.add('none');
-    
+            
         } else if (this.date.getFullYear() <= new Date().getFullYear()){
             this.prevYear.classList.add('none')
         };
@@ -117,46 +115,70 @@ class Calendar {
             this.prevMonth.classList.remove('none');
     
         };
+
         //listen for selected days
         //add conditional statement to check if id is before today
         this.monthDays.addEventListener('click', e => {
             if(e.target.classList.contains('day')){
                 const dateId = parseInt(e.target.id);
-                this.selectDays(e.target, dateId);
+                const today = document.querySelector(".today");
+                if((this.date.getMonth() != new Date().getMonth() ||
+                this.date.getFullYear() != new Date().getFullYear()) 
+                ||
+                (dateId >= parseInt(today.id) && 
+                this.date.getMonth() === new Date().getMonth() && 
+                this.date.getFullYear() === new Date().getFullYear())){
+                    this.selectDays(e.target, dateId);
+                }
+
             }
         });
     
     };
-
-
     
     selectDays(highlight, dateId) {
         this.selectedDateCounter ++;
-        if(this.selectedDateCounter <= 2 && (!this.selectedDateId || this.selectedDateId < dateId)){
+        console.log(this.selectedDateCounter, this.selectedDateId, dateId)
+        if(this.selectedDateCounter === 1 && !this.selectedDateId){
             highlight.classList.add('clicked');
-            if(this.selectedDateCounter === 2){
-                // console.log('date range')
-                // console.log(this.selectedDateId, dateId)
+            const firstDate = {
+                day: dateId,
+                month: this.date.getMonth(),
+                year: this.date.getFullYear()
+            }
+            localStorage.setItem('first-date', JSON.stringify(firstDate))
+            this.selectedDateId = parseInt(dateId);
+        }else if(this.selectedDateCounter === 2 && this.selectedDateId < dateId){
+            highlight.classList.add('clicked');
+            const secondDate = {
+                day: dateId,
+                month: this.date.getMonth(),
+                year: this.date.getFullYear()
+            }
+            localStorage.setItem('second-date', JSON.stringify(secondDate))
                 for(let x = this.selectedDateId +1; x < dateId; x++){
                     let a = x.toString();
-                    console.log(a)
+                    // console.log(a)
                     let b = document.getElementById(a);
                     b.classList.add('clicked-range');
                 }
                 this.selectedDateId = null;
-            } else {
-                this.selectedDateId = parseInt(dateId);
-            }
-
         } else {
+            localStorage.clear();
+            const firstDate = {
+                day: dateId,
+                month: this.date.getMonth(),
+                year: this.date.getFullYear()
+            }
+            localStorage.setItem('first-date', JSON.stringify(firstDate))
+            this.selectedDateCounter = 1;
+            this.selectedDateId = parseInt(dateId);
             document.querySelectorAll('.day').forEach(item => {
                 item.classList.remove('clicked');
                 item.classList.remove('clicked-range');
-                this.selectedDateCounter = 1;
-                this.selectedDateId = parseInt(dateId);
-                highlight.classList.add('clicked');
             });
-        this.dateEnquiry.innerHTML = new Date(this.date.getFullYear(), this.date.getMonth(), dateId).toDateString();
+            highlight.classList.add('clicked');
+        // this.dateEnquiry.innerHTML = new Date(this.date.getFullYear(), this.date.getMonth(), dateId).toDateString();
     };
     }
 };
