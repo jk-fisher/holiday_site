@@ -48,7 +48,9 @@ calendar.prevMonth.addEventListener('click', () =>{
     calendar.renderCalendar();
 });
 calendar.nextMonth.addEventListener('click', () => {
+    console.log(calendar.date);
     calendar.date.setMonth(calendar.date.getMonth()+1);
+    console.log(calendar.date);
     calendar.renderCalendar();
 });
 calendar.prevYear.addEventListener('click', () =>{
@@ -60,3 +62,23 @@ calendar.nextYear.addEventListener('click', () => {
     calendar.renderCalendar();
 });
 
+//listen for selected days
+//add conditional statement to check if id is before today
+calendar.monthDays.addEventListener('click', e => {
+  console.log('test')
+  if(e.target.classList.contains('day')){
+      console.log(e.target);
+      const dateId = parseInt(e.target.id);
+      const today = document.querySelector(".today");
+      if((calendar.date.getMonth() != new Date().getMonth() ||
+      calendar.date.getFullYear() != new Date().getFullYear()) 
+      ||
+      (dateId >= parseInt(today.id) && 
+      calendar.date.getMonth() === new Date().getMonth() && 
+      calendar.date.getFullYear() === new Date().getFullYear())){
+          calendar.selectDays(e.target, dateId);
+          console.log('wtf')
+      }
+
+  }
+});
