@@ -65,9 +65,7 @@ calendar.nextYear.addEventListener('click', () => {
 //listen for selected days
 //add conditional statement to check if id is before today
 calendar.monthDays.addEventListener('click', e => {
-  console.log('test')
   if(e.target.classList.contains('day')){
-      console.log(e.target);
       const dateId = parseInt(e.target.id);
       const today = document.querySelector(".today");
       if((calendar.date.getMonth() != new Date().getMonth() ||
@@ -77,7 +75,6 @@ calendar.monthDays.addEventListener('click', e => {
       calendar.date.getMonth() === new Date().getMonth() && 
       calendar.date.getFullYear() === new Date().getFullYear())){
           calendar.selectDays(e.target, dateId);
-          console.log('wtf')
       }
 
   }

@@ -22,82 +22,145 @@ class Calendar {
         this.monthDays = document.querySelector('.days');
         this.dateEnquiry = document.querySelector('.date-enquiry');
         this.selectedDateCounter = 0;
-        this.selectedDateId = null;
+        this.firstDateSelected = null;
+        this.secondDateSelected = null;
+        this.firstIndexSelected = null;
+        this.secondIndexSelected = null;
+        this.lastDate = null;
+        this.prevLastDate = null;
+        this.firstDayIndex = null;
+        this.lastDayIndex = null;
+        this.nextMonthDays = null;
         // this.allDays = document.querySelectorAll('.day');
     };
     
-    selectDays(highlight, dateId) {
-        console.log(this.selectedDateCounter, this.selectedDateId, dateId)
+    selectDays(highlight, indexOfDay) {
         this.selectedDateCounter ++;
-        if(this.selectedDateCounter === 1 && !this.selectedDateId){
+        const newDateObject = this.createDateObject(parseInt(indexOfDay));
+        if(this.selectedDateCounter === 1 && !this.firstDateSelected){
             highlight.classList.add('clicked');
-            const firstDate = {
-                day: dateId,
-                month: this.date.getMonth(),
-                year: this.date.getFullYear()
-            }
-            localStorage.setItem('first-date', JSON.stringify(firstDate))
-            this.selectedDateId = parseInt(dateId);
-        }else if(this.selectedDateCounter === 2 && this.selectedDateId < dateId){
+            this.firstDateSelected = newDateObject;
+            this.firstIndexSelected = indexOfDay;
+            console.log('test', this.findIndexofDay(this.firstDateSelected));
+            // const firstDate = {
+            //     day: indexOfDay,
+            //     month: this.date.getMonth(),
+            //     year: this.date.getFullYear()
+            // }
+            // localStorage.setItem('first-date', JSON.stringify(firstDate))
+        }else if(this.selectedDateCounter === 2 && this.firstDateSelected < newDateObject){
             highlight.classList.add('clicked');
-            const secondDate = {
-                day: dateId,
-                month: this.date.getMonth(),
-                year: this.date.getFullYear()
-            }
-            localStorage.setItem('second-date', JSON.stringify(secondDate))
-                for(let x = this.selectedDateId +1; x < dateId; x++){
+            this.secondDateSelected = newDateObject;
+            this.secondIndexSelected = indexOfDay;
+            console.log('firstDateSelected', this.firstDateSelected,
+                        'firstIndexSelected', this.firstIndexSelected,
+                        'secondDateSelected', this.secondDateSelected,
+                        'secondIndexSelected', this.secondIndexSelected,
+                        // 'month', this.date.getMonth(),
+                        // 'prevLastDate', this.prevLastDate,
+                        // 'firstDayIndex', this.firstDayIndex,
+                        // 'nextMonthDays', this.nextMonthDays,
+                        // 'lastDate', this.lastDate
+                        )
+            if(this.findIndexofDay(this.firstDateSelected) < 0){
+                console.log('first date is not on this page')
+                //select everything from index 0 to this.findIndexOfDay(this.secondDateSelected)
+            } else if (this.secondDateSelected > this.createDateObject(this.findLastIndex())){
+                console.log('second date is not on this page')
+            } else {
+                for(let x = this.firstIndexSelected +1; x < this.secondIndexSelected; x++){
                     let a = x.toString();
                     // console.log(a)
                     let b = document.getElementById(a);
                     b.classList.add('clicked-range');
                 }
-                this.selectedDateId = null;
-        } else {
-            localStorage.clear();
-            const firstDate = {
-                day: dateId,
-                month: this.date.getMonth(),
-                year: this.date.getFullYear()
+
+            
             }
-            localStorage.setItem('first-date', JSON.stringify(firstDate))
+                this.firstDateSelected = null;
+        } else {
+            this.firstDateSelected = newDateObject;
+            this.firstIndexSelected = indexOfDay;
+            this.secondDateSelected = null;
+            this.secondIndexSelected = null;
             this.selectedDateCounter = 1;
-            this.selectedDateId = parseInt(dateId);
             document.querySelectorAll('.day').forEach(item => {
                 item.classList.remove('clicked');
                 item.classList.remove('clicked-range');
             });
             highlight.classList.add('clicked');
-        // this.dateEnquiry.innerHTML = new Date(this.date.getFullYear(), this.date.getMonth(), dateId).toDateString();
+        // this.dateEnquiry.innerHTML = new Date(this.date.getFullYear(), this.date.getMonth(), indexOfDay).toDateString();
     };
     };
+
+    createDateObject (indexOfDay) {
+        let dayOfMonth = (indexOfDay + 1) - this.firstDayIndex;
+        let month = this.date.getMonth();
+        let year = this.date.getFullYear();
+        if(dayOfMonth > this.lastDate){
+            month++;
+            dayOfMonth = dayOfMonth - (this.lastDate); 
+            if(month > 11){
+            };
+        }else if(dayOfMonth < 1){
+            month--;
+            dayOfMonth = this.prevLastDate + dayOfMonth; 
+            if(month < 0){
+            };
+        };
+        const dateObject = new Date(year, month, dayOfMonth);
+        console.log(dateObject);
+        return dateObject;
+    };
+
+    findIndexofDay (dateObject) {
+        const date = dateObject.getDate();
+        const month = dateObject.getMonth();
+        if(month < this.date.getMonth()){
+            const prevLastDayIndex = this.firstDayIndex - 1;
+            const counterIndex = this.prevLastDate - date;
+            console.log('prev last day index', prevLastDayIndex, 'counter index', counterIndex)
+            return prevLastDayIndex - counterIndex;
+        } else {
+            return date + (this.firstDayIndex -1)
+        };
+    };
+
+    findLastIndex () {
+        console.log('last index of month', (this.firstDayIndex - 1) + this.lastDate + this.nextMonthDays)
+        return (this.firstDayIndex - 1) + this.lastDate + this.nextMonthDays;
+    };
+
 
     renderCalendar() {
         this.date.setDate(1);
     
     
-        const lastDate = new Date(
+        this.lastDate = new Date(
             this.date.getFullYear(),
             this.date.getMonth() + 1,
             0
             ).getDate();
+            // console.log('lastDate', this.lastDate);
         
-        const prevLastDate = new Date(
+        this.prevLastDate = new Date(
             this.date.getFullYear(),
             this.date.getMonth(),
             0
             ).getDate();
+            // console.log('prevLastDate', this.prevLastDate)
         
-        const firstDayIndex = this.date.getDay();
+        this.firstDayIndex = this.date.getDay();
         
         
-        const lastDayIndex = new Date(
+        this.lastDayIndex = new Date(
             this.date.getFullYear(),
             this.date.getMonth() + 1,
             0
             ).getDay();
+            // console.log('lastDayIndex', this.lastDayIndex);
     
-        const nextMonthDays = 7 - lastDayIndex - 1;
+        this.nextMonthDays = 7 - this.lastDayIndex - 1;
     
     
     
@@ -114,15 +177,14 @@ class Calendar {
         // console.log(days, firstDayIndex)
 
         //count down to output last month days
-        for(let x = firstDayIndex; x > 0; x--){
+        for(let x = this.firstDayIndex; x > 0; x--){
+            days += `<div class="prev-date day" id=${arrayIndex}>${this.prevLastDate - x + 1}</div>`
             arrayIndex++;
-            days += `<div class="prev-date day" id=${arrayIndex}>${prevLastDate - x + 1}</div>`
             // console.log(days)
         };
     
         //this month days
-        for(let i = 1; i <= lastDate; i++){
-            arrayIndex++;
+        for(let i = 1; i <= this.lastDate; i++){
             if(i === new Date().getDate() &&
             this.date.getMonth() === new Date().getMonth() &&
             this.date.getFullYear() === new Date().getFullYear()
@@ -131,12 +193,13 @@ class Calendar {
             }else{
                 days += `<div class="day" id=${arrayIndex}>${i}</div>`
             }
+            arrayIndex++;
         };
     
         //next month days
-        for(let j = 1; j <= nextMonthDays; j++){
-            arrayIndex++;
+        for(let j = 1; j <= this.nextMonthDays; j++){
             days += `<div class="next-date day" id=${arrayIndex}>${j}</div>`
+            arrayIndex++;
         };
         this.monthDays.innerHTML = days;
     
