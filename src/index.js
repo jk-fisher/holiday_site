@@ -74,7 +74,7 @@ calendar.monthDays.addEventListener('click', e => {
       (dateId >= parseInt(today.id) && 
       calendar.date.getMonth() === new Date().getMonth() && 
       calendar.date.getFullYear() === new Date().getFullYear())){
-          calendar.selectDays(e.target, dateId);
+          calendar.selectDays(dateId);
       }
 
   }
