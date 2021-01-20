@@ -33,27 +33,20 @@ class Calendar {
         this.nextMonthDays = null;
         // this.allDays = document.querySelectorAll('.day');
     };
-    
-    selectDays(indexOfDay) {
-        this.selectedDateCounter ++;
-        const target = document.getElementById(indexOfDay);
-        // console.log(target);
-        const newDateObject = this.createDateObject(indexOfDay);
-        if(this.selectedDateCounter === 1 && !this.firstDateSelected){
-            target.classList.add('clicked');
-            this.firstDateSelected = newDateObject;
-            this.firstIndexSelected = indexOfDay;
 
+
+    selectDays(dateId) {
+        this.selectedDateCounter ++;
+        const newDateObject = this.createDateObject(dateId);
+        if(this.selectedDateCounter === 1 && !this.firstDateSelected){
+            this.firstDateSelected = newDateObject;
+            this.firstIndexSelected = dateId;
         }else if(this.selectedDateCounter === 2 && this.firstDateSelected < newDateObject){
-            target.classList.add('clicked');
             this.secondDateSelected = newDateObject;
-            this.secondIndexSelected = indexOfDay;
-        
-            this.selectMultipleMonths();
-                // this.firstDateSelected = null;
+            this.secondIndexSelected = dateId;
         } else {
             this.firstDateSelected = newDateObject;
-            this.firstIndexSelected = indexOfDay;
+            this.firstIndexSelected = dateId;
             this.secondDateSelected = null;
             this.secondIndexSelected = null;
             this.selectedDateCounter = 1;
@@ -61,11 +54,57 @@ class Calendar {
                 item.classList.remove('clicked');
                 item.classList.remove('clicked-range');
             });
-            console.log(target)
+        }
+        this.highlightDays();
+    }
+
+    // selectMultipleMonths () {
+    highlightDays () {
+        console.log('highlight days is called')
+        if(this.selectedDateCounter === 1 && this.firstDateSelected >= this.createDateObject(0)){
+            const target = document.getElementById(this.findIndexofDay(this.firstDateSelected));
             target.classList.add('clicked');
-        // this.dateEnquiry.innerHTML = new Date(this.date.getFullYear(), this.date.getMonth(), indexOfDay).toDateString();
-    };
-    };
+        } else if (this.selectedDateCounter === 2 && this.secondDateSelected > this.createDateObject(0)) {
+            if(this.findIndexofDay(this.firstDateSelected) && this.findIndexofDay(this.firstDateSelected) < 0){
+                console.log('first date is not on this page', this.findIndexofDay(this.firstDateSelected));
+                const target = document.getElementById(this.secondIndexSelected);
+                console.log('second index target', target);
+                target.classList.add('clicked');
+                //select everything from index 0 to this.findIndexOfDay(this.secondDateSelected)
+                for(let x = 0; x < this.secondIndexSelected; x++){
+                    let a = x.toString();
+                    let b = document.getElementById(a);
+                    b.classList.add('clicked-range');
+                }
+            } else if (this.findIndexofDay(this.firstDateSelected) && this.secondDateSelected > this.createDateObject(this.findLastIndex())){
+                //select everything from first date selected to last day showing on calendar
+                console.log('first date selected index', this.findIndexofDay(this.firstDateSelected));
+                const target = document.getElementById(this.findIndexofDay(this.firstDateSelected));
+                if(target){
+                    console.log('first index target', target);
+                    target.classList.add('clicked');
+                    for(let x = this.findIndexofDay(this.firstDateSelected) + 1; x <= this.findLastIndex(); x++){
+                        let a = x.toString();
+                        let b = document.getElementById(a);
+                        b.classList.add('clicked-range');
+                    }
+                }
+            } else {
+                console.log('both dates are on this page')
+                let firsttarget = document.getElementById(this.findIndexofDay(this.firstDateSelected));
+                firsttarget.classList.add('clicked');
+                let secondtarget = document.getElementById(this.findIndexofDay(this.secondDateSelected));
+                secondtarget.classList.add('clicked');
+                for(let x = this.findIndexofDay(this.firstDateSelected) +1; x < this.secondIndexSelected; x++){
+                    let a = x.toString();
+                    // console.log(x);
+                    let b = document.getElementById(a);
+                    b.classList.add('clicked-range');
+                }
+            }
+
+        }
+    }
 
     createDateObject (indexOfDay) {
         let dayOfMonth = (indexOfDay + 1) - this.firstDayIndex;
@@ -90,18 +129,19 @@ class Calendar {
     findIndexofDay (dateObject) {
         const date = dateObject.getDate();
         const month = dateObject.getMonth();
-        if(month < this.date.getMonth()){
+        if(month === this.date.getMonth()-1){
             const prevLastDayIndex = this.firstDayIndex - 1;
             const counterIndex = this.prevLastDate - date;
             // console.log('prev last day index', prevLastDayIndex, 'counter index', counterIndex)
             return prevLastDayIndex - counterIndex;
-        } else if (month > this.date.getMonth()){
-            console.log(date + this.lastDate + (this.firstDayIndex -1))
+        } else if (month === this.date.getMonth()+1){
+            // console.log(date + this.lastDate + (this.firstDayIndex -1))
             return date + this.lastDate + (this.firstDayIndex -1);
-        } else {
+        } else if(month === this.date.getMonth()){
             // console.log('index of day next month day', date + (this.firstDayIndex -1))
             return date + (this.firstDayIndex -1)
         };
+
     };
 
     findLastIndex () {
@@ -109,36 +149,7 @@ class Calendar {
         return (this.firstDayIndex - 1) + this.lastDate + this.nextMonthDays;
     };
 
-    selectMultipleMonths () {
-        if(this.findIndexofDay(this.firstDateSelected) < 0){
-                console.log('first date is not on this page', this.findIndexofDay(this.firstDateSelected))
-                //select everything from index 0 to this.findIndexOfDay(this.secondDateSelected)
-            for(let x = 0; x < this.secondIndexSelected; x++){
-                let a = x.toString();
-                let b = document.getElementById(a);
-                b.classList.add('clicked-range');
-            }
-        } else if (this.secondDateSelected > this.createDateObject(this.findLastIndex())){
-            //select everything from first date selected to last day showing on calendar
-            console.log('second date is not on this page')
-            for(let x = this.firstIndexSelected + 1; x <= this.findLastIndex(); x++){
-                let a = x.toString();
-                let b = document.getElementById(a);
-                b.classList.add('clicked-range');
-            }
-        } else {
-            console.log('dates are on same page', this.firstIndexSelected)
-            // console.log('!this.findIndexofDay(this.firstDateSelected)')
-            for(let x = this.findIndexofDay(this.firstDateSelected) +1; x < this.secondIndexSelected; x++){
-                let a = x.toString();
-                console.log(x);
-                let b = document.getElementById(a);
-                b.classList.add('clicked-range');
-            }
-
-        
-        }
-    }
+    
 
 
     renderCalendar() {
@@ -213,11 +224,7 @@ class Calendar {
         this.monthDays.innerHTML = days;
     
         // Highlighting any selected days
-        console.log('first', this.firstDateSelected, 'second', this.secondDateSelected)
-        if(this.firstDateSelected){
-            console.log('selecting days after render')
-            this.selectDays(this.findIndexofDay(this.firstDateSelected))
-        }
+        this.highlightDays();
 
         //hide and show arrow icons
         if(this.date.getFullYear() <= new Date().getFullYear() &&
