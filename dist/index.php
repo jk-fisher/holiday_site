@@ -24,7 +24,7 @@
             <div class="logo">
                 <a href="./index.php"><h1>Le<br>Petit Cottage</h1></a>
             </div>
-            <ul class="topnav" id="myTopnav">
+            <ul class="topnav" id="topnav">
                 <li class="active"><a href="./index.php">Home</a></li>
                 <li><a href="#property-details">Property Details</a></li>
                 <li><a href="#contact">Availability & Pricing</a></li>
@@ -32,8 +32,7 @@
                 <li><a href="attractions.html">Things To Do</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <a href="javascript:void(0);" class="icon">
-                    <i class="fa fa-bars"></i></a>
+                <button class="icon" id="navBar"><i class="fa fa-bars"></i></button>
             </ul>
         </nav>
     </header>
@@ -203,7 +202,20 @@
                     </div>
                     <div class="days"></div>
                 </div>
-                <div class="date-enquiry"></div>
+                <div class="price-container">
+                    <div class="date-enquiry">
+                        <div class="header">
+                            <span class="white">Only £48/<br><span class="sm">night</span></span> <br><br>
+                        </div>
+                        <div class="price-filler">
+                            <div> 10% OFF<br><span class="sm">on weekly bookings</span></div> <br> 
+                            <div class="info">Select your dates on the calender to check availability.</div> 
+                        </div>
+                    </div> 
+                    <div class="price-summary">
+                        <ul class="price-breakdown"></ul>
+                    </div>
+                </div>
             </section>
             <div class="color-block"></div>
             <div class="cntr"><a name="reviews"></a></div>

@@ -20,7 +20,7 @@ class Calendar {
         this.prevYear = document.querySelector('.prev-year');
         this.nextYear = document.querySelector('.next-year');
         this.monthDays = document.querySelector('.days');
-        this.dateEnquiry = document.querySelector('.date-enquiry');
+        this.dateEnquiry = document.querySelector('.header');
         this.selectedDateCounter = 0;
         this.firstDateSelected = null;
         this.secondDateSelected = null;
@@ -44,6 +44,7 @@ class Calendar {
         }else if(this.selectedDateCounter === 2 && this.firstDateSelected < newDateObject){
             this.secondDateSelected = newDateObject;
             this.secondIndexSelected = dateId;
+            this.renderUIDates();
         } else {
             this.firstDateSelected = newDateObject;
             this.firstIndexSelected = dateId;
@@ -148,7 +149,36 @@ class Calendar {
         // console.log('last index of month', (this.firstDayIndex - 1) + this.lastDate + this.nextMonthDays)
         return (this.firstDayIndex - 1) + this.lastDate + this.nextMonthDays;
     };
-
+    calculateNights() {
+        let timeDifference = this.secondDateSelected.getTime() - this.firstDateSelected.getTime();
+        return Math.round(timeDifference / (1000 * 3600 * 24)); 
+    }
+    clearUIdates(){
+        
+    }
+    renderUIDates(){
+        console.log(this.firstDateSelected)
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const discount = (this.calculateNights()*47) * 0.1;
+        const roundedDiscount = discount.toFixed(2);
+        const totalPrice = (this.calculateNights()*47) - roundedDiscount;
+        const roundedTotalPrice = totalPrice.toFixed(2);
+        const priceBreakdown = document.querySelector('.price-breakdown');
+        const discountDisplay = document.querySelector('.price-filler');
+        this.dateEnquiry.innerHTML = `<span class="white">${this.firstDateSelected.toLocaleString('en-GB', options)} - <br>${this.secondDateSelected.toLocaleString('en-GB', options)}</span>`;
+        discountDisplay.classList.add('none');
+        priceBreakdown.innerHTML = `<li class="flex"><span class="calculate-nights">£48 x ${this.calculateNights()} nights</span><span class="nights-price">£${(this.calculateNights()*47).toFixed(2)}</span></li>
+                                    <li class="flex border"><span><b>Total:</span><span>£${roundedTotalPrice}</b></span>`;
+        priceBreakdown.classList.add('padding')
+        if(this.calculateNights() > 6){
+            let li = document.createElement('li');
+            li.classList.add('flex')
+            li.innerHTML = `<span>Weekly discount -10%</span><span>-£${roundedDiscount}</span>`;
+            priceBreakdown.insertBefore(li, priceBreakdown.firstElementChild.nextElementSibling);
+            // priceBreakdown.classList.add("border");
+        }
+        
+    }
     
 
 

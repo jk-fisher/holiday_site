@@ -1,4 +1,4 @@
-import { navFunction, displayText, showEnquiryBtn } from './scripts/script';
+import { toggle, displayText, showEnquiryBtn } from './scripts/script';
 import Calendar from './scripts/calendar';
 
 //modal function
@@ -21,9 +21,9 @@ window.addEventListener('click', (event) => {
 });
 
 //call navbar function
-const nav = document.getElementById("myTopnav");
+const nav = document.getElementById("navBar");
 nav.addEventListener('click', () => {
-    navFunction();
+    toggle();
 });
 
 //show enquiry button on scroll
