@@ -1,11 +1,9 @@
 //responsive navbar function
-const navFunction = () => {
-  if (nav.className === "topnav") {
-    nav.className += " responsive";
-  } else {
-    nav.className = "topnav";
-  }
-}
+const toggle = () => {
+  const nav = document.getElementById("topnav");
+  nav.className === "topnav" ? nav.className += " responsive" : nav.className = "topnav";
+};
+
 
 //read more function in property description
 const displayText = () => {
@@ -39,4 +37,4 @@ const showEnquiryBtn = () => {
 
 // window.onscroll = showEnquiryBtn();
 
-export { navFunction, displayText, showEnquiryBtn };
+export { toggle, displayText, showEnquiryBtn };

@@ -6,6 +6,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist/assets'),
         filename: 'bundle.js'
     },
+    mode: 'development',
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),
         publicPath: 'http://localhost:80/assets/'

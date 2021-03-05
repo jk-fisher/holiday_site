@@ -1,13 +1,10 @@
 .template.price {
-    display: flex;
-    justify-content: left;
     align-items: center;
-    padding: 50px;
     box-sizing: border-box;
-
 }
 .calendar {
-    width: 450px;
+    width: 98%;
+    max-width: 450px;
     height: 520px;
     background-color: white;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
@@ -81,12 +78,49 @@
 .days > div {
     font-size: 14px;
     padding: 3px;
-    width: calc(402px / 7);
+    width: calc(402px / 11);
     height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: background-color 0.2s;
+    margin: 0 auto;
+}
+@media screen and (min-width: 346px) {
+    .days > div {
+        width: calc(402px / 10);
+    }
+}
+@media screen and (min-width: 378px) {
+    .days > div {
+        width: calc(402px / 9);
+    }
+}
+@media screen and (min-width: 421px) {
+    .days > div {
+        width: calc(402px / 8);
+    }
+}
+@media screen and (min-width: 472px) {
+    .days > div {
+        width: calc(402px / 7);
+    }
+}
+@media screen and (min-width: 768px) {
+    .template.price {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        padding: 50px;
+        box-sizing: border-box;
+    }
+    .calendar {
+        width: 450px;
+        height: 520px;
+        background-color: white;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+    }
 }
 
 .days div:hover:not(.today){
@@ -106,17 +140,70 @@
 .none {
     visibility: hidden;
 }
-
-.date-enquiry{
-    width: 50%;
-    margin: auto;
-    text-align: center; 
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 32px;
-    color: #C3A97B;
-    text-align: center;
+.flex {
+    display: flex;
+    justify-content: space-between;
 }
+.price-container{
+    width: 38%;
+    margin: auto;
+    min-height: 377px;
+    text-align: center; 
+    color: #C3A97B;
+    line-height: 1.4em;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+.date-enquiry {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 26px;
+    line-height: 1.4em;
+}
+span.sm{
+    font-size: 22px;
+}
+span.white{
+    color: white;
 
+}
+.header {
+    margin: 0px auto;
+    background-color: #C3A97B;
+    width: 100%;
+    height: 100px;
+    border-radius: 10px 10px 0px 0px;
+    line-height: 1em;
+    padding-top: 25px;
+    box-sizing: border-box;
+}
+.price-filler {
+    margin: 50px auto 0px auto;
+    max-width: 80%;
+}
+.price-breakdown {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 50px auto;
+    max-width: 70%;
+}
+.price-breakdown > li{
+    padding: 5px 0px;
+}
+.padding {
+    padding: 20px 0px;
+
+}
+.none{
+    display: none;
+}
+.info {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.2em;
+}
+.border{
+    border-top: solid 1px;
+    /* border-bottom: solid 1px; */
+}
 .clicked {
     background-color: #C0C0C0;
 }
