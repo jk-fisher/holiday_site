@@ -48,9 +48,9 @@ calendar.prevMonth.addEventListener('click', () =>{
     calendar.renderCalendar();
 });
 calendar.nextMonth.addEventListener('click', () => {
-    console.log(calendar.date);
+    // console.log(calendar.date);
     calendar.date.setMonth(calendar.date.getMonth()+1);
-    console.log(calendar.date);
+    // console.log(calendar.date);
     calendar.renderCalendar();
 });
 calendar.prevYear.addEventListener('click', () =>{
