@@ -214,6 +214,7 @@
                     </div> 
                     <div class="price-summary">
                         <ul class="price-breakdown"></ul>
+                        <button class="book-btn none">Request to book</button>
                     </div>
                 </div>
             </section>

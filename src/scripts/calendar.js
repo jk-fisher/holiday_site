@@ -157,10 +157,11 @@ class Calendar {
         const priceBreakdown = document.querySelector('.price-breakdown');
         const discountDisplay = document.querySelector('.price-filler');
         this.dateEnquiry.innerHTML = `<span class="white">${this.firstDateSelected.toLocaleString('en-GB', options)} - <br>${this.secondDateSelected.toLocaleString('en-GB', options)}</span>`;
-        discountDisplay.classList.add('none')
+        discountDisplay.classList.add('none');
+        document.querySelector("body > div.content-container > section.template.price > div.price-container > div.price-summary > button").classList.remove('none');
         priceBreakdown.innerHTML = `<li class="flex"><span class="calculate-nights">£48 x ${this.calculateNights()} nights</span><span class="nights-price">£${(this.calculateNights()*47).toFixed(2)}</span></li>
                                     <li class="flex border"><span><b>Total:</span><span>£${roundedTotalPrice}</b></span>`;
-        priceBreakdown.classList.add('padding')
+        // priceBreakdown.classList.add('padding')
         if(this.calculateNights() > 6){
             let li = document.createElement('li');
             li.classList.add('flex')
