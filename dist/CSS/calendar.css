@@ -1,16 +1,16 @@
 .template.price {
     align-items: center;
     box-sizing: border-box;
+    margin: 0 auto;
 }
 .calendar {
-    width: 98%;
-    max-width: 450px;
-    height: 520px;
+    width: 100%;
+    max-width: 395px;
     background-color: white;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
+    margin: 15px auto;
 }
-
 .month-year {
     width: 100%;
     height: 120px;
@@ -51,76 +51,92 @@
     width: 100%;
     height: 50px;
     display: flex;
-    align-items: center;
-    padding-top: 5px;
+    justify-content: center;
+    padding-top: 20px;
 }
 
 .weekdays > div {
     font-size: 15px;
     font-weight: 400;
     letter-spacing: 3px;
-    width: calc(402px / 7);
+    width: calc(400px / 7);
     display: flex;
     justify-content: center;
     align-items: center;
     color: #707070;
     font-weight: 500;
-    margin: 3px;
+    /* margin: 3px; */
 }
 
 .days {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    color: #707070
+    color: #707070;
+    justify-content: center;    
 }
 
 .days > div {
     font-size: 14px;
-    padding: 3px;
-    width: calc(402px / 11);
+    /* padding: 3px; */
+    width: calc(400px / 7);
     height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: background-color 0.2s;
-    margin: 0 auto;
+    /* margin: 0 auto; */
 }
-@media screen and (min-width: 346px) {
+@media screen and (min-width: 320px){
+    .calendar {
+        min-width: 304px;
+        /* max-width: 310px; */
+        height: 520px;
+    }
+    .days {
+        width: 100%;
+        margin: 0 auto;
+        max-width: 345px;
+    }
     .days > div {
-        width: calc(402px / 10);
+        width: calc(304px / 7);
+    }
+    .weekdays > div {
+        width: calc(304px / 7);
     }
 }
-@media screen and (min-width: 378px) {
+@media screen and (min-width: 402px) {
+    .days {
+        max-width: 375px;
+    }
     .days > div {
-        width: calc(402px / 9);
+        width: calc(375px / 7);
+    }
+    .weekdays > div {
+        width: calc(375px / 7);
     }
 }
-@media screen and (min-width: 421px) {
-    .days > div {
-        width: calc(402px / 8);
-    }
-}
-@media screen and (min-width: 472px) {
-    .days > div {
-        width: calc(402px / 7);
-    }
-}
+/* at wider screen display calendar and prices inline */
 @media screen and (min-width: 768px) {
     .template.price {
         display: flex;
         justify-content: space-around;
         align-items: center;
-        padding: 50px;
+        padding: 50px 0px;
         box-sizing: border-box;
     }
     .calendar {
-        width: 450px;
-        height: 520px;
-        background-color: white;
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-        border-radius: 10px;
+        margin: 0 5px;
     }
+    /* .days {
+        max-width: 330px;
+    }
+    .days > div {
+        width: calc(330px / 7);
+    }
+    .weekdays > div {
+        width: calc(330px / 7);
+    } */
 }
 
 .days div:hover:not(.today){
@@ -147,11 +163,24 @@
 .price-container{
     width: 40%;
     min-height: 390px;
+    min-width: 304px;
+    max-width: 395px;
     text-align: center; 
     color: #C3A97B;
     line-height: 1.4em;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
+    margin: 15px auto;
+}
+/* @media screen and (min-width: 360px){
+    .price-container{
+        min-width: 360px;
+    }
+} */
+@media screen and (min-width: 768px) {
+    .price-container{
+        margin: 0px 5px;
+    }
 }
 .date-enquiry {
     font-family: 'Josefin Sans', sans-serif;
@@ -167,6 +196,7 @@ span.white{
 }
 .header {
     margin: 0px auto;
+    position: relative;
     background-color: #C3A97B;
     width: 100%;
     height: 100px;
@@ -235,7 +265,6 @@ span.white{
 .book-btn:hover {
     background-color:#F4D482;
     /* padding: 22px 72px 22px; */
-
 
 }
 .book-btn:focus {
