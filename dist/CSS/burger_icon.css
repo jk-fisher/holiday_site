@@ -1,0 +1,52 @@
+/* body{
+    background-color: white;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+} */
+label {
+    width: 1.2em;
+    height: 0.2em;
+    background-color: #C3A97B;
+    position: absolute;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+}
+label::before,
+label::after{
+    content:'';
+    width: 1.6em;
+    height: 0.2em;
+    background-color: #C3A97B;
+    position: absolute;
+    display: block;
+    transition: all 0.4s ease-in; 
+}
+label::before{
+    top: -8px;
+    left: 0%;
+    transform-origin: left top;
+    transform: rotatez(0deg);
+}
+label::after {
+    bottom: -8px;
+    left: 0%;
+    transform-origin: left bottom;
+    transform: rotatez(0deg);
+}
+
+#navbar:checked ~ label::before{
+/*   background-color: red; */
+    transform:rotatez(41deg);
+}
+#navbar:checked ~ label::after{
+/*   background-color: red; */
+    transform:rotatez(-41deg);
+}
+#navbar:checked ~ label{
+    background-color: white;
+}
+.icon > input{
+    display:none;
+}
