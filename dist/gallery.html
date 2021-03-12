@@ -9,6 +9,7 @@
     <link rel="icon" href="./img/icon_01.png">
     <link rel="stylesheet" href="./CSS/gallery.css">
     <link rel="stylesheet" href="./CSS/home refactor.css">
+    <link rel="stylesheet" href="./CSS/burger_icon.css">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,344;1,100;1,300;1,400&family=Mulish:wght@300&family=Raleway:wght@500&display=swap" rel="stylesheet">   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
@@ -20,19 +21,19 @@
 </head>
 <header>
     <nav class="nav-container">
-        <div class="logo">
-            <a href="./index.php"><h1>Le<br>Petit Cottage</h1></a>
-        </div>
-        <ul class="topnav" id="myTopnav">
-            <li><a href="./index.php">Home</a></li>
-            <li><a href="./index.php#property-details">Property Details</a></li>
-            <li><a href="./index.php#availability-pricing">Availability & Pricing</a></li>
-            <li><a href="./index.php#location">Location</a></li>
-            <li><a href="./attractions.html">Things To Do</a></li>
-            <li class="active"><a href="#gallery">Gallery</a></li>
-            <li><a href="./index.php#contact">Contact</a></li>
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                <i class="fa fa-bars"></i></a>
+        <a href="./index.php"><h1>Le<br>Petit Cottage</h1></a>
+        <ul class="topnav" id="topnav">
+            <li class="nav-item"><a href="./index.php">Home</a></li>
+            <li class="nav-item"><a href="./index.php#property-details">Property Details</a></li>
+            <li class="nav-item"><a href="./index.php#availability-pricing">Availability & Pricing</a></li>
+            <li class="nav-item"><a href="./index.php#location">Location</a></li>
+            <li class="nav-item"><a href="./attractions.html">Things To Do</a></li>
+            <li class="active nav-item"><a href="#gallery">Gallery</a></li>
+            <li class="nav-item"><a href="./index.php#contact">Contact</a></li>
+            <div class="icon">
+                <input type="checkbox" id="navbar">
+                <label for="navbar"></label>
+            </div>
         </ul>
     </nav>
 </header>
@@ -82,6 +83,7 @@
             </div>
         </div>
     </div>
+<script src="assets/bundle.js"></script> 
 <script>
     var slideIndex = 1;
     showDivs(slideIndex);
@@ -100,8 +102,9 @@
       }
       x[slideIndex-1].style.display = "block";  
     }
-    </script>
     
+</script>
+
 </body>
 <footer>
     <ul class="float-left">

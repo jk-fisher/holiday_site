@@ -21,10 +21,17 @@ window.addEventListener('click', (event) => {
 });
 
 //call navbar function
-const nav = document.getElementById("navBar");
+const nav = document.getElementById("navbar");
 nav.addEventListener('click', () => {
     toggle();
+    console.log('got element', nav)
 });
+const navItems = document.querySelectorAll('.nav-item');
+navItems.forEach((li) => {
+  li.addEventListener('click', () => {
+    toggle();
+  })
+})
 
 //show enquiry button on scroll
 window.addEventListener('scroll', () => {
