@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="./CSS/home refactor.css">
         <link rel="stylesheet" href="./CSS/modal.css">
         <link rel="stylesheet" href="./CSS/calendar.css">
+        <link rel="stylesheet" href="./CSS/burger_icon.css">
         <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,344;1,100;1,300;1,400&family=Mulish:wght@300&family=Raleway:wght@500&display=swap" rel="stylesheet">   
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
@@ -21,9 +22,9 @@
     </head>
     <header>
         <nav class="nav-container">
-            <div class="logo">
+            <!-- <div class="logo"> -->
                 <a href="./index.php"><h1>Le<br>Petit Cottage</h1></a>
-            </div>
+            <!-- </div> -->
             <ul class="topnav" id="topnav">
                 <li class="active"><a href="./index.php">Home</a></li>
                 <li><a href="#property-details">Property Details</a></li>
@@ -32,7 +33,11 @@
                 <li><a href="attractions.html">Things To Do</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <button class="icon" id="navBar"><i class="fa fa-bars"></i></button>
+                <div class="icon">
+                    <input type="checkbox" id="navbar">
+                    <label for="navbar"></label>
+                </div>
+                <!-- <button class="icon" id="navBar"><i class="fa fa-bars"></i></button> -->
             </ul>
         </nav>
     </header>
