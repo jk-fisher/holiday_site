@@ -27,12 +27,12 @@
             <!-- </div> -->
             <ul class="topnav" id="topnav">
                 <li class="active"><a href="./index.php">Home</a></li>
-                <li><a href="#property-details">Property Details</a></li>
-                <li><a href="#contact">Availability & Pricing</a></li>
-                <li><a href="#location">Location</a></li>
-                <li><a href="attractions.html">Things To Do</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li class="nav-item"><a href="#property-details">Property Details</a></li>
+                <li class="nav-item"><a href="#calendar">Availability & Pricing</a></li>
+                <li class="nav-item"><a href="#location">Location</a></li>
+                <li class="nav-item"><a href="attractions.html">Things To Do</a></li>
+                <li class="nav-item"><a href="gallery.html">Gallery</a></li>
+                <li class="nav-item"><a href="#contact">Contact</a></li>
                 <div class="icon">
                     <input type="checkbox" id="navbar">
                     <label for="navbar"></label>
@@ -178,7 +178,9 @@
                     <img class="img-item3" src="./img/img_12.jpg" alt="La Petit Cottage - Seasonal Produce From The Farm" style="width:100%;cursor:pointer">
                 </div>
             </section>
-            <div class="color-block"></div>
+            <div class="color-block">
+            </div>
+            <div class="cntr"><a name="calendar"></a></div>
             <section class="template price">
                 <div class="calendar">
                     <div class="month-year">

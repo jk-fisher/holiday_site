@@ -81,7 +81,7 @@ img.cover {
 	object-fit: cover;
 }
 h3{ 
-margin-top: 245px;
+margin-top: 120px;
 }
 @media screen and (min-width: 550px){
 	.grid-container{
@@ -114,5 +114,10 @@ margin-top: 245px;
 	}
 	.column-1{
 		grid-column: 1/2;
+	}
+}
+@media screen and (min-width: 830px){
+	h3{
+		margin-top: 220px;
 	}
 }

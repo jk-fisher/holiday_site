@@ -1,12 +1,17 @@
 {
   "name": "holiday_site",
+  "sideEffects": [
+    "./calendar.js",
+    "scripts.js"
+  ],
   "version": "1.0.0",
   "description": "Holiday rental site for Dordogne Escape",
   "main": "src/index.js",
   "scripts": {
     "babel": "node_modules/.bin/babel src/index.js -w -o dist/assets/bundle.js",
-    "webpack": "node_modules/.bin/webpack -w",
-    "serve": "webpack-dev-server"
+    "build": "node_modules/.bin/webpack --config webpack.prod.js",
+    "serve": "node_modules/.bin/webpack serve --open --config webpack.dev.js",
+    "webpack": "node_modules/.bin/webpack -w"
   },
   "repository": {
     "type": "git",
@@ -25,9 +30,8 @@
     "babel-loader": "^8.2.2",
     "webpack": "^5.11.1",
     "webpack-cli": "^4.3.1",
+    "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.7.3"
   },
-  "dependencies": {
-    "webpack-dev-server": "^3.2.1"
-  }
+  "dependencies": {}
 }
