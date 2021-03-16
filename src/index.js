@@ -21,23 +21,22 @@ window.addEventListener('click', (event) => {
 });
 
 //call navbar function
-const nav = document.getElementById("navbar");
-nav.addEventListener('click', () => {
-    toggle();
-    console.log('got element', nav)
+const burgerBar = document.getElementById("navbar");
+burgerBar.addEventListener('click', () => {
+    toggle(burgerBar);
+    // console.log('i am updated')
 });
 const navItems = document.querySelectorAll('.nav-item');
 navItems.forEach((li) => {
   li.addEventListener('click', () => {
-    toggle();
+    toggle(burgerBar);
   })
 })
 
 //show enquiry button on scroll
-window.addEventListener('scroll', () => {
-    showEnquiryBtn();
-})
-// window.onscroll = showEnquiryBtn();
+// window.addEventListener('scroll', () => {
+//     showEnquiryBtn();
+// })
 
 //show more text function
 const moreText = document.getElementById("moreBtn");

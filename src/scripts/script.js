@@ -1,8 +1,14 @@
 //responsive navbar function
-const toggle = () => {
+const toggle = (burgerBar) => {
   const nav = document.getElementById("topnav");
   nav.className === "topnav" ? nav.className += " responsive" : nav.className = "topnav";
-  
+  if (nav.className === "topnav") {
+    burgerBar.checked = false;
+    console.log('burgerbar checked = false');
+  } else {
+    burgerBar.checked = true;
+    console.log('burgerbar checked = true');
+  }
 };
 
 

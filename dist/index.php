@@ -26,7 +26,7 @@
                 <a href="./index.php"><h1>Le<br>Petit Cottage</h1></a>
             <!-- </div> -->
             <ul class="topnav" id="topnav">
-                <li class="active"><a href="./index.php">Home</a></li>
+                <li class="active nav-item"><a href="./index.php">Home</a></li>
                 <li class="nav-item"><a href="#property-details">Property Details</a></li>
                 <li class="nav-item"><a href="#calendar">Availability & Pricing</a></li>
                 <li class="nav-item"><a href="#location">Location</a></li>
@@ -52,7 +52,7 @@
                     <p><span class="total-review">4.5</span> (60 reviews)</p></div>
                     <a href="#reviews">See Reviews</a>
             </div>
-            <a href="#contact" id="checkAvailabilityBtn">Request to book now!</a>
+            <!-- <a href="#contact" id="checkAvailabilityBtn">Request to book now!</a> -->
             <!-- <button id="checkAvailabilityBtn">Request to book now!</button> -->
             <div class="template amenities cntr">
                 <a name="property-details"></a>
@@ -336,9 +336,9 @@
                 </form>
             </div>
         </div>  
-        <!-- <script src="scripts/calendar.js"></script> -->
-        <!-- <script src="scripts/script.js"></script> -->
         <script src="assets/bundle.js"></script> 
+        <!-- <script src="main.js"></script>  -->
+
     </body>
     <footer>
             <ul class="float-left">
