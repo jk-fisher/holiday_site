@@ -1,5 +1,10 @@
-import { toggle, displayText, showEnquiryBtn } from './scripts/script';
-import Calendar from './scripts/calendar';
+import 'normalize.css/normalize.css'
+import './css/main.css'
+import './css/modal.css'
+import './css/calendar.css'
+import './css/burger_icon.css'
+import { toggle, displayText } from '../scripts/script';
+import Calendar from '../scripts/calendar';
 
 //modal function
 const modal = document.getElementById("myModal");
