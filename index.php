@@ -9,9 +9,8 @@
         <link rel="icon" href="./img/icon_01.png">
         <link rel="stylesheet" href="./CSS/home refactor.css">
         <link rel="stylesheet" href="./CSS/modal.css">
+        <link rel="stylesheet" href="./CSS/calendar.css">
         <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,344;1,100;1,300;1,400&family=Mulish:wght@300&family=Raleway:wght@500&display=swap" rel="stylesheet">   
-        <script src="./script.js" defer></script>
-        <script src="./script-modal.js" defer></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Oranienbaum&display=swap" rel="stylesheet">
@@ -176,8 +175,37 @@
                 </div>
             </section>
             <div class="color-block"></div>
-            <!-- <section class="price"></section>
-            <div class="color-block"></div> -->
+            <section class="template price">
+                <div class="calendar">
+                    <div class="month-year">
+                        <div class="prev">
+                            <i class="fas fa-angle-left prev-month"></i>
+                            <i class="fas fa-angle-left prev-year"></i>
+                        </div>
+                        <div class="date">
+                            <div class="month"></div>
+                            <div class="year"></div>
+                            <div class="selected-date"></div>
+                        </div>
+                        <div class="next">
+                            <i class="fas fa-angle-right next-month"></i>
+                            <i class="fas fa-angle-right next-year"></i>
+                        </div>
+                    </div>
+                    <div class="weekdays">
+                        <div>Sun</div>
+                        <div>Mon</div>
+                        <div>Tue</div>
+                        <div>Wed</div>
+                        <div>Thu</div>
+                        <div>Fri</div>
+                        <div>Sat</div>
+                    </div>
+                    <div class="days"></div>
+                </div>
+                <div class="date-enquiry"></div>
+            </section>
+            <div class="color-block"></div>
             <div class="cntr"><a name="reviews"></a></div>
             <section class="reviews">
                 <H3>Reviews</H3><br>
@@ -287,7 +315,10 @@
                     <button type="submit" name="submit" id="submit">SUBMIT</button>
                 </form>
             </div>
-        </div>    
+        </div>  
+        <script src="scripts/calendar.js"></script>
+        <script src="scripts/script.js"></script>
+        <script src="scripts/modal.js"></script> 
     </body>
     <footer>
             <ul class="float-left">
