@@ -352,3 +352,4 @@ MigrationBackup/
 Archive.zip
 .DS_Store
 bundle.js
+dist
