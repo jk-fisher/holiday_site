@@ -32,7 +32,7 @@
                 <li><a href="attractions.html">Things To Do</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <a href="javascript:void(0);" class="icon">
                     <i class="fa fa-bars"></i></a>
             </ul>
         </nav>
@@ -162,7 +162,7 @@
                         <br>
                         Please note...this is not a good holiday for anyone keen on discos and nightlife, or who is irritated by birdsong and farmyard noises!</span>
                     </p>
-                        <button value="button text" onclick="displayText()" id="moreBtn">Read more  <i class='fas fa-angle-down'></i></button>
+                        <button value="button text" id="moreBtn">Read more  <i class='fas fa-angle-down'></i></button>
                 </div>
                 <div class="img-container">
                     <img class="property-img" src="./img/img_05.jpg" alt="La Petit Cottage - Kitchen" style="width:100%;cursor:pointer">
@@ -316,9 +316,9 @@
                 </form>
             </div>
         </div>  
-        <script src="scripts/calendar.js"></script>
-        <script src="scripts/script.js"></script>
-        <script src="scripts/modal.js"></script> 
+        <!-- <script src="scripts/calendar.js"></script> -->
+        <!-- <script src="scripts/script.js"></script> -->
+        <script src="assets/bundle.js"></script> 
     </body>
     <footer>
             <ul class="float-left">
