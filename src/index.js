@@ -1,4 +1,4 @@
-import { navFunction, displayText, showEnquiryBtn } from './scripts/script';
+import { toggle, displayText, showEnquiryBtn } from './scripts/script';
 import Calendar from './scripts/calendar';
 
 //modal function
@@ -21,16 +21,22 @@ window.addEventListener('click', (event) => {
 });
 
 //call navbar function
-const nav = document.getElementById("myTopnav");
-nav.addEventListener('click', () => {
-    navFunction();
+const burgerBar = document.getElementById("navbar");
+burgerBar.addEventListener('click', () => {
+    toggle(burgerBar);
+    // console.log('i am updated')
 });
+const navItems = document.querySelectorAll('.nav-item');
+navItems.forEach((li) => {
+  li.addEventListener('click', () => {
+    toggle(burgerBar);
+  })
+})
 
 //show enquiry button on scroll
-window.addEventListener('scroll', () => {
-    showEnquiryBtn();
-})
-// window.onscroll = showEnquiryBtn();
+// window.addEventListener('scroll', () => {
+//     showEnquiryBtn();
+// })
 
 //show more text function
 const moreText = document.getElementById("moreBtn");
@@ -48,9 +54,9 @@ calendar.prevMonth.addEventListener('click', () =>{
     calendar.renderCalendar();
 });
 calendar.nextMonth.addEventListener('click', () => {
-    console.log(calendar.date);
+    // console.log(calendar.date);
     calendar.date.setMonth(calendar.date.getMonth()+1);
-    console.log(calendar.date);
+    // console.log(calendar.date);
     calendar.renderCalendar();
 });
 calendar.prevYear.addEventListener('click', () =>{

@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="./CSS/home refactor.css">
         <link rel="stylesheet" href="./CSS/modal.css">
         <link rel="stylesheet" href="./CSS/calendar.css">
+        <link rel="stylesheet" href="./CSS/burger_icon.css">
         <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,344;1,100;1,300;1,400&family=Mulish:wght@300&family=Raleway:wght@500&display=swap" rel="stylesheet">   
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
@@ -21,19 +22,22 @@
     </head>
     <header>
         <nav class="nav-container">
-            <div class="logo">
+            <!-- <div class="logo"> -->
                 <a href="./index.php"><h1>Le<br>Petit Cottage</h1></a>
-            </div>
-            <ul class="topnav" id="myTopnav">
-                <li class="active"><a href="./index.php">Home</a></li>
-                <li><a href="#property-details">Property Details</a></li>
-                <li><a href="#contact">Availability & Pricing</a></li>
-                <li><a href="#location">Location</a></li>
-                <li><a href="attractions.html">Things To Do</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <a href="javascript:void(0);" class="icon">
-                    <i class="fa fa-bars"></i></a>
+            <!-- </div> -->
+            <ul class="topnav" id="topnav">
+                <li class="active nav-item"><a href="./index.php">Home</a></li>
+                <li class="nav-item"><a href="#property-details">Property Details</a></li>
+                <li class="nav-item"><a href="#calendar">Availability & Pricing</a></li>
+                <li class="nav-item"><a href="#location">Location</a></li>
+                <li class="nav-item"><a href="attractions.html">Things To Do</a></li>
+                <li class="nav-item"><a href="gallery.html">Gallery</a></li>
+                <li class="nav-item"><a href="#contact">Contact</a></li>
+                <div class="icon">
+                    <input type="checkbox" id="navbar">
+                    <label for="navbar"></label>
+                </div>
+                <!-- <button class="icon" id="navBar"><i class="fa fa-bars"></i></button> -->
             </ul>
         </nav>
     </header>
@@ -48,7 +52,7 @@
                     <p><span class="total-review">4.5</span> (60 reviews)</p></div>
                     <a href="#reviews">See Reviews</a>
             </div>
-            <a href="#contact" id="checkAvailabilityBtn">Request to book now!</a>
+            <!-- <a href="#contact" id="checkAvailabilityBtn">Request to book now!</a> -->
             <!-- <button id="checkAvailabilityBtn">Request to book now!</button> -->
             <div class="template amenities cntr">
                 <a name="property-details"></a>
@@ -174,7 +178,9 @@
                     <img class="img-item3" src="./img/img_12.jpg" alt="La Petit Cottage - Seasonal Produce From The Farm" style="width:100%;cursor:pointer">
                 </div>
             </section>
-            <div class="color-block"></div>
+            <div class="color-block">
+            </div>
+            <div class="cntr"><a name="calendar"></a></div>
             <section class="template price">
                 <div class="calendar">
                     <div class="month-year">
@@ -203,7 +209,21 @@
                     </div>
                     <div class="days"></div>
                 </div>
-                <div class="date-enquiry"></div>
+                <div class="price-container">
+                    <div class="date-enquiry">
+                        <div class="header">
+                            <span class="white">Only £48/<br><span class="sm">night</span></span> <br><br>
+                        </div>
+                        <div class="price-filler">
+                            <div> 10% OFF<br><span class="sm">on weekly bookings</span></div> <br> 
+                            <div class="info">Select your dates on the calender to check availability.</div> 
+                        </div>
+                    </div> 
+                    <div class="price-summary">
+                        <ul class="price-breakdown"></ul>
+                        <button class="book-btn none">Request to book</button>
+                    </div>
+                </div>
             </section>
             <div class="color-block"></div>
             <div class="cntr"><a name="reviews"></a></div>
@@ -316,9 +336,9 @@
                 </form>
             </div>
         </div>  
-        <!-- <script src="scripts/calendar.js"></script> -->
-        <!-- <script src="scripts/script.js"></script> -->
         <script src="assets/bundle.js"></script> 
+        <!-- <script src="main.js"></script>  -->
+
     </body>
     <footer>
             <ul class="float-left">

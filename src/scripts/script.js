@@ -1,11 +1,16 @@
 //responsive navbar function
-const navFunction = () => {
+const toggle = (burgerBar) => {
+  const nav = document.getElementById("topnav");
+  nav.className === "topnav" ? nav.className += " responsive" : nav.className = "topnav";
   if (nav.className === "topnav") {
-    nav.className += " responsive";
+    burgerBar.checked = false;
+    console.log('burgerbar checked = false');
   } else {
-    nav.className = "topnav";
+    burgerBar.checked = true;
+    console.log('burgerbar checked = true');
   }
-}
+};
+
 
 //read more function in property description
 const displayText = () => {
@@ -39,4 +44,4 @@ const showEnquiryBtn = () => {
 
 // window.onscroll = showEnquiryBtn();
 
-export { navFunction, displayText, showEnquiryBtn };
+export { toggle, displayText, showEnquiryBtn };
